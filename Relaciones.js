@@ -24,3 +24,14 @@ db.Productos.aggregate([
         }
     }
 ])
+
+db.Proveedores.aggregate([
+    {
+        $lookup: {
+            from: "Productos",
+            localField: "insumo",
+            foreignField: "insumos_p",
+            as: "proveedores_producto"
+        }
+    }
+])
